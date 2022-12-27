@@ -56,5 +56,28 @@ class AddNote : AppCompatActivity() {
                 return@setOnClickListener
             }
         }
+        binding.imgBackArrow.setOnClickListener {
+            val title = binding.etTitle.text.toString()
+            val note_desc = binding.etNote.text.toString()
+            if (title.isNotEmpty() || note_desc.isNotEmpty()){
+                val formatter = SimpleDateFormat("EEE, d MMM yyyy HH:mm a")
+                if (isUpdate){
+                    note = Note(
+                        old_note.id,title,note_desc,formatter.format(Date())
+                    )
+                }else{
+                    note = Note(
+                        null,title,note_desc,formatter.format(Date())
+                    )
+                }
+                val intent = Intent()
+                intent.putExtra("note",note)
+                setResult(Activity.RESULT_OK,intent)
+                finish()
+            }else{
+                Toast.makeText(this@AddNote,"Please enter some data",Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+        }
     }
 }

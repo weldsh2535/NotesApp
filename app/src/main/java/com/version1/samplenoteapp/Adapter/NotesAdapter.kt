@@ -16,12 +16,10 @@ import kotlin.random.Random
 class NotesAdapter(
     private val context: Context,
     val listener: NotesClickListener
-) :
-    RecyclerView.Adapter<NotesAdapter.NoteViewHolder>() {
+) : RecyclerView.Adapter<NotesAdapter.NoteViewHolder>() {
 
     private val NoteList = ArrayList<Note>()
     private val fullList = ArrayList<Note>()
-
 
     inner class NoteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val notes_layout = itemView.findViewById<CardView>(R.id.card_layout)
